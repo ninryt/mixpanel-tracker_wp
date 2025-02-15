@@ -39,11 +39,15 @@ with privacy regulations (e.g., GDPR, CCPA) when using tracking tools like Mixpa
 
 == Screenshots ==
 1. Screenshot of the Wordpress seetings page (where to add mixpanel token).
+   <img width="1062" alt="Screenshot 2025-02-15 at 16 50 50" src="https://github.com/user-attachments/assets/1de74a56-6146-42fe-99f8-2da80a1c39f9" />
+
  
 2.Screenshot of the Mixpanel settings page (token localisation).  
- 
+ <img width="1696" alt="Screenshot 2025-02-15 at 16 57 08" src="https://github.com/user-attachments/assets/97533325-5b65-47f2-a748-b63691b7addd" />
+
 3. Example of Mixpanel event tracking in real-time.  
- 
+ <img width="1810" alt="Screenshot 2025-02-15 at 17 01 57" src="https://github.com/user-attachments/assets/43006c4b-5152-4a1c-9acb-3d62fbe85e66" />
+
 == Changelog ==
 = 1.2 =
 * Added an admin settings page for entering the Mixpanel token.  
