@@ -1,7 +1,7 @@
 # Mixpanel Tracker for WordPress
 
-Mixpanel Tracker is a custom WordPress plugin that seamlessly integrates Mixpanel to track user behavior.  
-It provides real-time analytics without modifying theme files, allowing you to easily monitor page views, button clicks, menu interactions, and linked images. Improve website performance and optimize UX with data-driven insights.
+Mixpanel Tracker (![BI Badge](https://img.shields.io/badge/Business%20Intelligence-000080?style=flat-square) tool) is a custom WordPress plugin that seamlessly integrates Mixpanel to track user behavior.  
+It provides real-time analytics without modifying theme files, allowing you to easily monitor page views, button clicks, menu interactions, and linked images. Improve website ![BI Performance Badge](https://img.shields.io/badge/Performance%20-008B8B?style=flat-square) and optimize UX with data-driven insights.
 
 ---
 
