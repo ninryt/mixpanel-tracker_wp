@@ -7,6 +7,10 @@ Author: N.B.Ryttel
 Author URI: https://github.com/ninryt
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+== Privacy Notice ==
+This plugin uses Mixpanel for analytics. Please ensure compliance with privacy laws (e.g., GDPR, CCPA) when using tracking features.
+
 */
 
 // Prevent direct access
