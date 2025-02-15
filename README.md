@@ -1,7 +1,14 @@
 # Mixpanel Tracker for WordPress
 
-Mixpanel Tracker (![BI Badge](https://img.shields.io/badge/Business%20Intelligence-000080?style=flat-square) tool) is a custom WordPress plugin that seamlessly integrates Mixpanel to track user behavior.  
-It provides real-time analytics without modifying theme files, allowing you to easily monitor page views, button clicks, menu interactions, and linked images. Improve website ![BI Performance Badge](https://img.shields.io/badge/Performance%20-008B8B?style=flat-square) and optimize UX with data-driven insights.
+In this repository, you will find a ![BI Badge](https://img.shields.io/badge/Business%20Intelligence-000080?style=flat-square) tracking tool called ![Mixpanel Tracker](https://img.shields.io/badge/Mixpanel%20Tracker-4B0082?style=flat-square) (WordPress Plugin), which I developed to assist **Performance Analysts, UX Researchers, Product Data Analysts, and website owners** in tracking user behavior for business insights.  
+This tool seamlessly integrates with **Mixpanel**, providing **real-time user analytics** without modifying theme files. It enables effortless tracking of:  
+✅ **Page views**  
+✅ **Button clicks**  
+✅ **Menu interactions**  
+✅ **Linked images**  
+
+By leveraging this plugin, users can **enhance website ![BI Performance Badge](https://img.shields.io/badge/Performance%20-008B8B?style=flat-square)** and optimize UX with **data-driven insights**, helping businesses make informed decisions. 🚀  
+
 
 ---
 
@@ -24,13 +31,6 @@ Yes, Mixpanel Tracker is designed to work with any WordPress theme without modif
 ⭐ Is this plugin GDPR compliant?  
 This plugin does not store any personal data itself. However, you should ensure that you comply  
 with privacy regulations (e.g., GDPR, CCPA) when using tracking tools like Mixpanel.
-
-⭐ What user interactions does this plugin track? 
-- **Page views**  
-- **Button clicks**  
-- **Menu interactions**  
-- **Linked image clicks**  
-- **External link clicks (e.g., social media, portfolio links)**  
 
 ---
 
