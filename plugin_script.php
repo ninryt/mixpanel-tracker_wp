@@ -8,9 +8,9 @@ Author URI: https://github.com/ninryt
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
+
 == Privacy Notice ==
 This plugin uses Mixpanel for analytics. Please ensure compliance with privacy laws (e.g., GDPR, CCPA) when using tracking features.
-
 */
 
 // Prevent direct access
@@ -76,16 +76,16 @@ class MixpanelTracker {
         ?>
         <script>
         (function(f,b){if(!b.__SV){var e,g,i,h;window.mixpanel=b;b._i=[];b.init=function(e,f,c){function g(a,d){var b=d.split(".");2==b.length&&(a=a[b[0]],d=b[1]);a[d]=function(){a.push([d].concat(Array.prototype.slice.call(arguments,0)))}}var a=b;"undefined"!==typeof c?a=b[c]=[]:c="mixpanel";a.people=a.people||[];a.toString=function(a){var d="mixpanel";"mixpanel"!==c&&(d+="."+c);a||(d+=" (stub)");return d};a.people.toString=function(){return a.toString(1)+".people (stub)"};i="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
-        for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(arguments,0));a.push([e,call2])}}var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0));for(h=0;h<j.length;h++)b(j[h]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
+        for(h=0;h<i.length;h++)g(a,i[h]);var j="set set_once union unset remove delete".split(" ");a.get_group=function(){function b(c){d[c]=function(){call2_args=arguments;call2=[c].concat(Array.prototype.slice.call(call2_args,0));a.push([e,call2])}}var d={},e=["get_group"].concat(Array.prototype.slice.call(arguments,0));for(h=0;h<j.length;h++)b(j[h]);return d};b._i.push([e,f,c])};b.__SV=1.2;e=f.createElement("script");e.type="text/javascript";e.async=!0;e.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?
         MIXPANEL_CUSTOM_LIB_URL:"file:"===f.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";g=f.getElementsByTagName("script")[0];g.parentNode.insertBefore(e,g)}})(document,window.mixpanel||[]);
 
         // Initialize Mixpanel with your token
         mixpanel.init('<?php echo esc_js($this->mixpanel_token); ?>', {
-            debug: false,  // Disable debug mode
+            debug: false,
             track_pageview: false,
             ignore_dnt: true
         });
-
+        
         // Track page views
         mixpanel.track('Page View', {
             'page': window.location.pathname,
@@ -97,17 +97,33 @@ class MixpanelTracker {
         document.addEventListener('click', function(e) {
             let target = e.target;
             
-            if (target.tagName === 'IMG') {
-                target = target.closest('a') || target;
+            // Handle clicks on icons or elements inside links
+            while (target && !['A', 'BUTTON'].includes(target.tagName)) {
+                target = target.parentElement;
             }
+            
+            if (!target) return; // Exit if no clickable parent found
             
             let trackingData = {
                 'element_type': target.tagName,
-                'text': target.innerText || target.textContent || '',
+                'text': target.innerText?.trim() || target.getAttribute('aria-label') || '',
                 'url': target.href || window.location.href,
                 'id': target.id || '',
-                'classes': target.className || ''
+                'classes': target.className || '',
+                'is_external': target.href ? !target.href.includes(window.location.hostname) : false
             };
+
+            // For links with only icons, try to get a meaningful description
+            if (!trackingData.text) {
+                // Check for title attribute
+                trackingData.text = target.getAttribute('title') || 
+                                  // Check for img alt text
+                                  target.querySelector('img')?.getAttribute('alt') || 
+                                  // Check for aria-label
+                                  target.getAttribute('aria-label') || 
+                                  // Use href as last resort
+                                  target.href?.split('/').pop() || 'Unknown';
+            }
 
             if (target.tagName === 'A') {
                 mixpanel.track('Link Click', trackingData);
